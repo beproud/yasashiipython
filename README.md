@@ -1,0 +1,2 @@
+# yasashiipython
+いちばんやさしいPythonの教本のサンプルコード
