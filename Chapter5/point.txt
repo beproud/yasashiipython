@@ -1,0 +1,3 @@
+Takanori Suzuki:100,88,81
+Takayuki Shimizukawa:77,94,85
+Mitsuki Sugiya:80,52,99
