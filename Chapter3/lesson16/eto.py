@@ -1,2 +1,2 @@
-year = input()  # 標準入力（キーボードから入力された値）を変数へ代入
-print(year)  # 標準出力へ入力された値を出力
+year = input()
+print(year)
