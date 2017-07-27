@@ -1,6 +1,12 @@
 from pybot_eto import eto_command
-from pybot_random2 import choice_command, dice_command
-from pybot_datetime import today_command, now_command, weekday_command
+from pybot_random import choice_command, dice_command
+
+
+def len_command(command):
+    cmd, text = command.split()
+    length = len(text)
+    response = '文字列ノ長サハ {} 文字デス'.format(length)
+    return response
 
 
 def heisei_command(command):
@@ -14,19 +20,17 @@ def heisei_command(command):
     return response
 
 
-def len_command(command):
-    cmd, text = command.split(maxsplit=1)
-    length = len(text)
-    response = '文字列ノ長サハ {} 文字デス'.format(length)
-    return response
-
+command_file = open('pybot.txt', encoding='utf-8')
+raw_data = command_file.read()
+command_file.close()
+lines = raw_data.splitlines()
 
 bot_dict = {}
-with open('pybot.txt', encoding='utf-8') as f:
-    for line in f:
-        line = line.rstrip()
-        key, response = line.split(',')
-        bot_dict[key] = response
+for line in lines:
+    word_list = line.split(',')
+    key = word_list[0]
+    response = word_list[1]
+    bot_dict[key] = response
 
 while True:
     command = input('pybot> ')
@@ -46,12 +50,6 @@ while True:
         response = choice_command(command)
     if 'さいころ' in command:
         response = dice_command()
-    if '今日' in command:
-        response = today_command()
-    if '現在' in command:
-        response = now_command()
-    if '曜日' in command:
-        response = weekday_command(command)
 
     if not response:
         response = '何ヲ言ッテルカ、ワカラナイ'
