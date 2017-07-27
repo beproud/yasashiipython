@@ -1,7 +1,3 @@
-# 平成コマンドを関数にする
-# def, return
-
-
 def heisei_command(command):
     heisei, year_str = command.split()
     year = int(year_str)
@@ -13,11 +9,16 @@ def heisei_command(command):
     return response
 
 
-bot_dict = {}
-command_file = open('pybot04.csv', encoding='utf-8')
+command_file = open('pybot.txt', encoding='utf-8')
 raw_data = command_file.read()
-for line in raw_data.splitlines():
-    key, response = line.split(',')
+command_file.close()
+lines = raw_data.splitlines()
+
+bot_dict = {}
+for line in lines:
+    word_list = line.split(',')
+    key = word_list[0]
+    response = word_list[1]
     bot_dict[key] = response
 
 while True:

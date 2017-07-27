@@ -1,14 +1,13 @@
-# botの基本的なやりとりをファイルから読み込む
-# これで、csvをいじればいろんな動作がさせられるよ
-
-# open()のencodingの説明
-# 
+command_file = open('pybot.txt', encoding='utf-8')
+raw_data = command_file.read()
+command_file.close()
+lines = raw_data.splitlines()
 
 bot_dict = {}
-command_file = open('pybot04.csv', encoding='utf-8')
-raw_data = command_file.read()
-for line in raw_data.splitlines():
-    key, response = line.split(',')
+for line in lines:
+    word_list = line.split(',')
+    key = word_list[0]
+    response = word_list[1]
     bot_dict[key] = response
 
 while True:
