@@ -4,7 +4,7 @@ from pybot import pybot
 
 @route('/hello')
 def hello():
-    return template('pybot_template05', input_text='', output_text='')
+    return template('pybot_template', input_text='', output_text='')
 
 
 @route('/hello', method='POST')
